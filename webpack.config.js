@@ -13,7 +13,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Fancy'
+      template: './src/index.html'
     })
   ],
   module: {
@@ -23,7 +23,7 @@ module.exports = {
       use: {
         loader: 'babel-loader',
         options: {
-          presets: ['es2015']
+          presets: ['es2015', 'react']
         }
       }
     }, {
