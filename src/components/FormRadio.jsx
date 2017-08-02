@@ -7,12 +7,6 @@ function _makeIconElement(icon) {
 }
 
 class FormRadio extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selected: this.props.selected
-    };
-  }
   render() {
     return (
       <form>
@@ -21,26 +15,27 @@ class FormRadio extends React.Component {
     );
   }
   makeRadios() {
-    const selectedValue = this.state.selected;
-    return this.props.items.map((x) => {
-      const isSelected = (x.value === selectedValue);
-      const icon = _makeIconElement(x.icon);
+    const items = this.props.items;
+    const value = this.props.value;
+    return items.map((item) => {
+      const isSelected = (item.value === value);
+      const icon = _makeIconElement(item.icon);
       return (
-        <label className='FormRadioItem' key={x.value}>
+        <label className='FormRadioItem' key={item.value}>
           <input
             type='radio'
-            value={x.value}
+            value={item.value}
             checked={isSelected}
-            onChange={this
-              .handleRadioChange
-              .bind(this)} />
-          {icon}{x.text}
+            onChange={this.handleChange.bind(this)} />
+          {icon}{item.text}
         </label>
       )
     });
   }
-  handleRadioChange(evt) {
-    this.setState({ selected: evt.target.value });
+  handleChange(evt) {
+    const value = evt.target.value;
+    if (this.props.onChange)
+      this.props.onChange(this, value);
   }
 }
 

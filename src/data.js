@@ -38,7 +38,7 @@ export default {
     text: 'Chinese yuan (元)',
     value: 'cny'
   }],
-  profileVisibilities: [{
+  profileOptions: [{
     text: 'Everyone',
     value: 'all'
   }, {
@@ -46,7 +46,7 @@ export default {
     value: 'me',
     icon: 'fa-lock'
   }],
-  messages: [{
+  messageOptions: [{
     text: 'Everyone',
     value: 'all'
   }, {

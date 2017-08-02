@@ -8,13 +8,22 @@ function _makeOptions(items) {
   });
 }
 
-export default (props) => {
-  const options = _makeOptions(props.items || []);
-  return (
-    <div className='FormSelectContainer'>
-      <select className='FormSelect'>
-        {options}
-      </select>
-    </div>
-  );
-};
+class FormSelect extends React.Component {
+  render() {
+    const options = _makeOptions(this.props.items || []);
+    return (
+      <div className='FormSelectContainer'>
+        <select className='FormSelect' value={this.props.value} onChange={this.handleChange.bind(this)}>
+          {options}
+        </select>
+      </div>
+    );
+  }
+  handleChange(evt) {
+    const selectValue = evt.target.value;
+    if (this.props.onChange)
+      this.props.onChange(this, selectValue);
+  }
+}
+
+export default FormSelect;
