@@ -16,11 +16,10 @@ import FormSpace from '../components/FormSpace.jsx';
 import data from '../data.js';
 import config from '../../config/config.js';
 
-axios.defaults.withCredentials = true;
-
 class Preferences extends React.Component {
   constructor(props) {
     super(props);
+    axios.defaults.withCredentials = true;
     this.state = {
       fetched: false,
       isSaving: false,
@@ -85,7 +84,7 @@ class Preferences extends React.Component {
             <FormSpace height='5px' />
             <FormItemHint>
               Interested in helping translate Fancy?&nbsp;
-              <a href='#'>Let us know</a>.
+              <a onClick={this.alertUnavailable}>Let us know</a>.
             </FormItemHint>
           </FormItem>
           <FormItem title='Time zone'>
@@ -115,7 +114,7 @@ class Preferences extends React.Component {
           </FormItem>
           <FormItem title='Recently viewed'>
             <FormItemHint>Manage your Fancy browsing history.</FormItemHint>
-            <a href='#'>Delete all items</a>
+            <a onClick={this.alertUnavailable}>Delete all items</a>
           </FormItem>
         </SubForm>
         <SubForm title='Content'>
@@ -131,6 +130,9 @@ class Preferences extends React.Component {
         </SubForm>
       </Form>
     );
+  }
+  alertUnavailable() {
+    Alert.info('Selected feature is unavailable');
   }
   linkValue(prefKey) {
     return {
@@ -151,7 +153,10 @@ class Preferences extends React.Component {
       const userPref = this.state.userPref;
       const res = await axios.put(config.apiUrl, userPref);
       success = res.data.success;
-      Alert.success('Saved');
+      if (success)
+        Alert.success('Saved');
+      else
+        Alert.error('Failed to save');
     } catch (e) {
       console.error(e);
       Alert.error('Something wrong, Please try again');
