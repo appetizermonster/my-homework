@@ -9,6 +9,7 @@ import FormItemHint from '../components/FormItemHint.jsx';
 import FormSelect from '../components/FormSelect.jsx';
 import FormRadio from '../components/FormRadio.jsx';
 import FormButton from '../components/FormButton.jsx';
+import FormSpace from '../components/FormSpace.jsx';
 
 import data from './preferences-data.js';
 
@@ -20,7 +21,7 @@ class Preferences extends React.Component {
     };
   }
   componentDidMount() {
-    setTimeout(() => this.setState({ fetched: true }), 3000);
+    setTimeout(() => this.setState({ fetched: true }), 1000);
   }
   render() {
     if (!this.state.fetched)
@@ -30,9 +31,7 @@ class Preferences extends React.Component {
   renderLoading() {
     return (
       <Form>
-        <div style={{
-          padding: '20px'
-        }}>
+        <div style={{ padding: '20px' }}>
           <center>
             <ReactLoading
               type='spinningBubbles'
@@ -51,12 +50,13 @@ class Preferences extends React.Component {
         <SubForm title='Localization'>
           <FormItem title='Language'>
             <FormSelect items={data.languages} />
+            <FormSpace height='5px' />
             <FormItemHint>
               Interested in helping translate Fancy?&nbsp;
               <a href='#'>Let us know</a>.
             </FormItemHint>
           </FormItem>
-          <FormItem title='Timezone'>
+          <FormItem title='Time zone'>
             <FormSelect items={data.timezones} />
           </FormItem>
           <FormItem title='Currency'>
@@ -74,7 +74,7 @@ class Preferences extends React.Component {
             <FormRadio items={data.messages} />
           </FormItem>
           <FormItem title='Recently viewed'>
-            <FormItemHint>Manage your Fancy browsing history</FormItemHint>
+            <FormItemHint>Manage your Fancy browsing history.</FormItemHint>
             <a href='#'>Delete all items</a>
           </FormItem>
         </SubForm>
@@ -84,8 +84,7 @@ class Preferences extends React.Component {
             <FormRadio items={data.categoryListOptions} />
           </FormItem>
         </SubForm>
-        <SubForm></SubForm>
-        <SubForm>
+        <SubForm align="right">
           <FormButton text='Save Preferences' />
         </SubForm>
       </Form>

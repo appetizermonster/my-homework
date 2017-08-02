@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default (props) => (
-  <button>{props.text}</button>
+  <button className='FormButton' disabled={props.disabled}>{props.text}</button>
 );

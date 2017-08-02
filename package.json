@@ -11,6 +11,7 @@
   "author": "Heejin Lee <hjhome2000@naver.com>",
   "license": "ISC",
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-loading": "^0.1.4"

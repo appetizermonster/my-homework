@@ -1,5 +1,11 @@
 import React from 'react';
 
+function _makeIconElement(icon) {
+  if (!icon)
+    return null;
+  return <i className={`fa ${icon}`} />;
+}
+
 class FormRadio extends React.Component {
   constructor(props) {
     super(props);
@@ -18,18 +24,18 @@ class FormRadio extends React.Component {
     const selectedValue = this.state.selected;
     return this.props.items.map((x) => {
       const isSelected = (x.value === selectedValue);
+      const icon = _makeIconElement(x.icon);
       return (
-        <div key={x.value}>
-          <label>
-            <input
-              type='radio'
-              value={x.value}
-              checked={isSelected}
-              onChange={this
-                .handleRadioChange
-                .bind(this)} /> {x.text}
-          </label>
-        </div>
+        <label className='FormRadioItem' key={x.value}>
+          <input
+            type='radio'
+            value={x.value}
+            checked={isSelected}
+            onChange={this
+              .handleRadioChange
+              .bind(this)} />
+          {icon}{x.text}
+        </label>
       )
     });
   }

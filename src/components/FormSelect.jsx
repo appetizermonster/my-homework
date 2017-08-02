@@ -11,8 +11,10 @@ function _makeOptions(items) {
 export default (props) => {
   const options = _makeOptions(props.items || []);
   return (
-    <select>
-      {options}
-    </select>
+    <div className='FormSelectContainer'>
+      <select className='FormSelect'>
+        {options}
+      </select>
+    </div>
   );
 };

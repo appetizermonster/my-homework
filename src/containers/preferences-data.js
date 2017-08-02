@@ -43,7 +43,8 @@ export default {
     value: 'all'
   }, {
     text: 'Private',
-    value: 'me'
+    value: 'me',
+    icon: 'fa-lock'
   }],
   messages: [{
     text: 'Everyone',
@@ -53,7 +54,8 @@ export default {
     value: 'followings'
   }, {
     text: 'No one',
-    value: 'none'
+    value: 'none',
+    icon: 'fa-lock'
   }],
   categoryListOptions: [{
     text: 'Enable',

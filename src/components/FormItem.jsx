@@ -1,8 +1,7 @@
 import React from 'react';
-import '../css/FormItem.css';
 
 export default (props) => (
-  <div>
+  <div className='FormItem'>
     <div className='FormItemHeader'>
       {props.title}
     </div>

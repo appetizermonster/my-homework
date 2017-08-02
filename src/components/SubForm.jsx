@@ -1,17 +1,22 @@
 import React from 'react';
-import '../css/SubForm.css';
 
-const SubForm = (props) => (
-  <div className='SubForm'>
-    <div className='SubFormContainer'>
-      <div className='SubFormNav'>
-        {props.title}
-      </div>
-      <div className='SubFormContent'>
-        {props.children}
+const SubForm = (props) => {
+  const style = {
+    textAlign: props.align,
+    height: props.height
+  };
+  return (
+    <div className='SubForm' style={style}>
+      <div className='SubFormContainer'>
+        <div className='SubFormNav'>
+          {props.title}
+        </div>
+        <div className='SubFormContent'>
+          {props.children}
+        </div>
       </div>
     </div>
-  </div>
-);
+  )
+};
 
 export default SubForm;
