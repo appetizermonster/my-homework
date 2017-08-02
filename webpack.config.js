@@ -2,19 +2,23 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/app.js',
+  entry: './src/index.js',
   devServer: {
     contentBase: './dist',
     hot: true
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Fancy'
+    })
   ],
   module: {
     rules: [{
-      test: /\.js$/,
+      test: /\.jsx?$/,
       exclude: /node_modules/,
       use: {
         loader: 'babel-loader',
@@ -22,6 +26,15 @@ module.exports = {
           presets: ['es2015']
         }
       }
+    }, {
+      test: /\.css?/,
+      use: ['style-loader', 'css-loader']
+    }, {
+      test: /\.(png|jpg|gif)$/,
+      use: 'url-loader?limit=1000'
+    }, {
+      test: /\.(svg|woff2?|ttf|eot)$/,
+      use: 'file-loader'
     }]
   },
   output: {
