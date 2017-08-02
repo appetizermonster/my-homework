@@ -16,6 +16,8 @@ import FormSpace from '../components/FormSpace.jsx';
 import data from '../data.js';
 import config from '../../config/config.js';
 
+axios.defaults.withCredentials = true;
+
 class Preferences extends React.Component {
   constructor(props) {
     super(props);

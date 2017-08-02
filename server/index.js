@@ -2,7 +2,9 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 const cors = require('cors');
+
 const app = express();
 
 const memory = {
@@ -14,7 +16,16 @@ const memory = {
   categoryListOption: 'off'
 };
 
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:8080'],
+  methods: ['GET', 'PUT'],
+  credentials: true
+}));
+app.use(session({
+  secret: 'this is secret',
+  saveUninitialized: false,
+  resave: false
+}));
 app.use(bodyParser.json());
 
 app.get('/pref', (req, res) => {
