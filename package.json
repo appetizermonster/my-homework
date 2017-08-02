@@ -12,7 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-loading": "^0.1.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
