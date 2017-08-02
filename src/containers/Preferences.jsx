@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactLoading from 'react-loading';
+import Alert from 'react-s-alert';
 import axios from 'axios';
 
 import Form from '../components/Form.jsx';
@@ -46,6 +47,7 @@ class Preferences extends React.Component {
       });
     } catch (e) {
       console.error(e);
+      Alert.error('Something wrong, Please try again');
     }
   }
   render() {
@@ -147,8 +149,10 @@ class Preferences extends React.Component {
       const userPref = this.state.userPref;
       const res = await axios.put(config.apiUrl, userPref);
       success = res.data.success;
+      Alert.success('Saved');
     } catch (e) {
       console.error(e);
+      Alert.error('Something wrong, Please try again');
     }
     this.setState({ isSaving: false, isDirty: !success });
   }
