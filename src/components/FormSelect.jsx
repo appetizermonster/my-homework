@@ -1,6 +1,6 @@
 import React from 'react';
 
-function _makeOptions(items) {
+function createOptionComponents(items) {
   return items.map((x) => {
     return (
       <option key={x.value} value={x.value}>{x.text}</option>
@@ -10,7 +10,7 @@ function _makeOptions(items) {
 
 class FormSelect extends React.Component {
   render() {
-    const options = _makeOptions(this.props.items || []);
+    const options = createOptionComponents(this.props.items || []);
     return (
       <div className='FormSelectContainer'>
         <select className='FormSelect' value={this.props.value} onChange={this.handleChange.bind(this)}>

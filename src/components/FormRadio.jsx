@@ -1,6 +1,6 @@
 import React from 'react';
 
-function _makeIconElement(icon) {
+function createIconComponent(icon) {
   if (!icon)
     return null;
   return <i className={`fa ${icon}`} />;
@@ -10,16 +10,16 @@ class FormRadio extends React.Component {
   render() {
     return (
       <form>
-        {this.makeRadios()}
+        {this.createRadioComponents()}
       </form>
     );
   }
-  makeRadios() {
+  createRadioComponents() {
     const items = this.props.items;
     const value = this.props.value;
     return items.map((item) => {
       const isSelected = (item.value === value);
-      const icon = _makeIconElement(item.icon);
+      const icon = createIconComponent(item.icon);
       return (
         <label className='FormRadioItem' key={item.value}>
           <input
