@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/FormItem.css';
 
-const FormItem = (props) => (
+export default (props) => (
   <div>
     <div className='FormItemHeader'>
       {props.title}
@@ -11,5 +11,3 @@ const FormItem = (props) => (
     </div>
   </div>
 );
-
-export default FormItem;
