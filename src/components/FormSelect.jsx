@@ -8,7 +8,7 @@ function _makeOptions(items) {
   });
 }
 
-export default(props) => {
+export default (props) => {
   const options = _makeOptions(props.items || []);
   return (
     <select>

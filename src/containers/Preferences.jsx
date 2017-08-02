@@ -20,7 +20,7 @@ class Preferences extends React.Component {
     };
   }
   componentDidMount() {
-    setTimeout(() => this.setState({fetched: true}), 3000);
+    setTimeout(() => this.setState({ fetched: true }), 3000);
   }
   render() {
     if (!this.state.fetched)
@@ -38,7 +38,7 @@ class Preferences extends React.Component {
               type='spinningBubbles'
               color='#4b4f5d'
               width='32px'
-              height='32px'/>
+              height='32px' />
           </center>
         </div>
       </Form>
@@ -50,28 +50,28 @@ class Preferences extends React.Component {
         <FormHeader>Edit Preferences</FormHeader>
         <SubForm title='Localization'>
           <FormItem title='Language'>
-            <FormSelect items={data.languages}/>
+            <FormSelect items={data.languages} />
             <FormItemHint>
               Interested in helping translate Fancy?&nbsp;
               <a href='#'>Let us know</a>.
             </FormItemHint>
           </FormItem>
           <FormItem title='Timezone'>
-            <FormSelect items={data.timezones}/>
+            <FormSelect items={data.timezones} />
           </FormItem>
           <FormItem title='Currency'>
-            <FormSelect items={data.currencies}/>
+            <FormSelect items={data.currencies} />
           </FormItem>
         </SubForm>
         <SubForm title='Privacy'>
           <FormItem title='Profile visibility'>
             <FormItemHint>Manage who can see your activity, things you fancy, your
               followers, people you follow or in anyone's search results.</FormItemHint>
-            <FormRadio items={data.profileVisibilities}/>
+            <FormRadio items={data.profileVisibilities} />
           </FormItem>
           <FormItem title='Messages'>
             <FormItemHint>Control who can send you messages.</FormItemHint>
-            <FormRadio items={data.messages}/>
+            <FormRadio items={data.messages} />
           </FormItem>
           <FormItem title='Recently viewed'>
             <FormItemHint>Manage your Fancy browsing history</FormItemHint>
@@ -81,12 +81,12 @@ class Preferences extends React.Component {
         <SubForm title='Content'>
           <FormItem title='Category lists'>
             <FormItemHint>Automatically add Fancy'd items to the Category list.</FormItemHint>
-            <FormRadio items={data.categoryListOptions}/>
+            <FormRadio items={data.categoryListOptions} />
           </FormItem>
         </SubForm>
         <SubForm></SubForm>
         <SubForm>
-          <FormButton text='Save Preferences'/>
+          <FormButton text='Save Preferences' />
         </SubForm>
       </Form>
     );
