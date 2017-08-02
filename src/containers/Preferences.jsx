@@ -35,8 +35,8 @@ class Preferences extends React.Component {
         }}>
           <center>
             <ReactLoading
-              type="spinningBubbles"
-              color="#4b4f5d"
+              type='spinningBubbles'
+              color='#4b4f5d'
               width='32px'
               height='32px'/>
           </center>
@@ -51,6 +51,16 @@ class Preferences extends React.Component {
         <SubForm title='Localization'>
           <FormItem title='Language'>
             <FormSelect items={data.languages}/>
+            <FormItemHint>
+              Interested in helping translate Fancy?&nbsp;
+              <a href='#'>Let us know</a>.
+            </FormItemHint>
+          </FormItem>
+          <FormItem title='Timezone'>
+            <FormSelect items={data.timezones}/>
+          </FormItem>
+          <FormItem title='Currency'>
+            <FormSelect items={data.currencies}/>
           </FormItem>
         </SubForm>
         <SubForm title='Privacy'>
@@ -65,7 +75,7 @@ class Preferences extends React.Component {
           </FormItem>
           <FormItem title='Recently viewed'>
             <FormItemHint>Manage your Fancy browsing history</FormItemHint>
-            <a href="#">Delete all items</a>
+            <a href='#'>Delete all items</a>
           </FormItem>
         </SubForm>
         <SubForm title='Content'>
