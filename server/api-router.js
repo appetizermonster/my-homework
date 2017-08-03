@@ -8,8 +8,6 @@ const apiService = require('./api-service');
 
 const router = express.Router();
 
-apiService.initialize().catch(console.error);
-
 router.get('/', wrap(async (req, res) => {
   const session = req.session;
   const userId = session.userId;

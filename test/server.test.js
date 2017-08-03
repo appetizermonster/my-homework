@@ -1,5 +1,6 @@
 'use strict';
 
+// Set test mode
 process.env.NODE_ENV = 'test';
 
 const chai = require('chai');
@@ -9,7 +10,7 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-const app = require('../../server/app');
+const app = require('../server/app');
 
 describe('Basic API', () => {
   it('should return defaults on first time', async () => {

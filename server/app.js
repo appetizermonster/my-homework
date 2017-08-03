@@ -6,6 +6,7 @@ const session = require('express-session');
 const path = require('path');
 const log = require('./utils/log');
 const apiRouter = require('./api-router');
+const apiService = require('./api-service');
 
 const app = express();
 const isTestMode = (process.env.NODE_ENV === 'test');
@@ -31,5 +32,7 @@ app.use(session({
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../dist')));
 app.use('/api', apiRouter);
+
+apiService.initialize().catch(console.error);
 
 module.exports = app;
