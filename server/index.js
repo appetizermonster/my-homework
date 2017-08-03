@@ -9,7 +9,10 @@ const isDevMode = (process.env.NODE_ENV === 'development');
 if (isDevMode)
   webpackHelper.runDevServer();
 
-const port = 3000;
-app.listen(port, () => {
-  log(`api server is listening on port ${port}...`);
+const PORT = 3000;
+app.listen(PORT, () => {
+  log(`api server is listening on port ${PORT}...`);
+
+  if (!isDevMode)
+    log(`open http://localhost:${PORT}`);
 });
