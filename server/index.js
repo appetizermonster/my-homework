@@ -11,6 +11,8 @@ const log = require('./utils/log');
 
 const app = express();
 const service = require('./service');
+const webpackHelper = require('./webpack-helper');
+const isDevMode = (process.env.NODE_ENV !== 'production');
 
 function getDefaultUserPref() {
   return {
@@ -22,6 +24,9 @@ function getDefaultUserPref() {
     categoryListOption: 'off'
   };
 }
+
+if (isDevMode)
+  webpackHelper.runDevServer();
 
 app.use(cors({
   origin: ['http://localhost:8080'],
