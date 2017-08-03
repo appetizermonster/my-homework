@@ -13,19 +13,21 @@ import FormRadio from '../components/FormRadio.jsx';
 import FormButton from '../components/FormButton.jsx';
 import FormSpace from '../components/FormSpace.jsx';
 
-import data from '../data.js';
-import config from '../../config/config.js';
+import data from '../../shared/data.js';
+import config from '../config';
 
 class Preferences extends React.Component {
   constructor(props) {
     super(props);
-    axios.defaults.withCredentials = true;
     this.state = {
       fetched: false,
       isSaving: false,
       isDirty: false,
       userPref: null
     };
+
+    if (IS_DEV_MODE)
+      axios.defaults.withCredentials = true;
   }
   componentDidMount() {
     this.fetchPref();

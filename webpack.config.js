@@ -1,28 +1,31 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const isDevMode = (process.env.NODE_ENV !== 'production');
+
+const plugins = [
+  new HtmlWebpackPlugin({ template: './app/index.html' }),
+  new webpack.DefinePlugin({
+    IS_DEV_MODE: JSON.stringify(isDevMode)
+  })
+];
+
+if (isDevMode)
+  plugins.push(new webpack.HotModuleReplacementPlugin());
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './app/index.js',
   devServer: {
     contentBase: './dist',
     hot: true
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({ template: './src/index.html' })
-  ],
+  plugins,
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['es2015', 'react']
-          }
-        }
+        use: 'babel-loader'
       }, {
         test: /\.css?/,
         use: ['style-loader', 'css-loader', 'postcss-loader']

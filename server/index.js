@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const cors = require('cors');
 const uuid = require('uuid/v4');
+const path = require('path');
 
 const wrap = require('./utils/async-wrapper');
 const log = require('./utils/log');
@@ -39,8 +40,9 @@ app.use(session({
   resave: false
 }));
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, '../dist')));
 
-app.get('/pref', wrap(async (req, res) => {
+app.get('/api', wrap(async (req, res) => {
   const session = req.session;
   const userId = session.userId;
   let userPref = getDefaultUserPref();
@@ -55,7 +57,7 @@ app.get('/pref', wrap(async (req, res) => {
   res.json(userPref);
 }));
 
-app.put('/pref', wrap(async (req, res) => {
+app.put('/api', wrap(async (req, res) => {
   let success = false;
   const userId = req.session.userId;
   if (userId) {

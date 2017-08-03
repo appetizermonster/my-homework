@@ -1,4 +1,6 @@
-export default {
+'use strict';
+
+module.exports = {
   languages: [{
     text: 'English',
     value: 'en'
