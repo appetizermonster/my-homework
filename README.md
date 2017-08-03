@@ -17,6 +17,7 @@ Internally, it saves data on MongoDB using UserID, but There is no login process
 
 - Node.js 8.x
 - yarn
+- MongoDB running on your localhost:27017
 
 ## Installation
 ```bash
