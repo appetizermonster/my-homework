@@ -13,6 +13,6 @@ const PORT = 3000;
 app.listen(PORT, () => {
   log(`api server is listening on port ${PORT}...`);
 
-  if (!isDevMode)
-    log(`open http://localhost:${PORT}`);
+  const endUserPort = isDevMode ? webpackHelper.LISTEN_PORT : PORT;
+  log(`open http://localhost:${endUserPort}`);
 });
