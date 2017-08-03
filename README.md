@@ -5,6 +5,8 @@ This application saves data only while you are in the browser.
 
 Internally, it saves data on MongoDB using UserID, but There is no login process, so UserID assigned to you is very temporary(random uuid), it will be gone after you close the browser.
 
+![](docs/preview.png)
+
 ## Directory Structure
 ```
  + app     - Front-end React Application
