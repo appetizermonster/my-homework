@@ -4,10 +4,10 @@
   "description": "A homework for Taskworld",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "mocha ./test/**/*.test.js",
     "build": "NODE_ENV=production webpack -p",
     "start": "NODE_ENV=production webpack -p && node server/index.js",
-    "dev": "NODE_ENV=developement node server/index.js"
+    "dev": "NODE_ENV=development node server/index.js"
   },
   "author": "Heejin Lee <hjhome2000@naver.com>",
   "license": "ISC",
@@ -34,6 +34,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "bootstrap": "^3.3.7",
     "chai": "^4.1.0",
+    "chai-http": "^3.0.0",
     "cors": "^2.8.4",
     "css-loader": "^0.28.4",
     "eslint": "^4.3.0",

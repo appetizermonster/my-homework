@@ -1,73 +1,15 @@
 'use strict';
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const session = require('express-session');
-const cors = require('cors');
-const uuid = require('uuid/v4');
-const path = require('path');
-
-const wrap = require('./utils/async-wrapper');
+const app = require('./app');
+const webpackHelper = require('./webpack-helper');
 const log = require('./utils/log');
 
-const app = express();
-const service = require('./service');
-const webpackHelper = require('./webpack-helper');
-const isDevMode = (process.env.NODE_ENV !== 'production');
-
-function getDefaultUserPref() {
-  return {
-    language: 'kr',
-    timezone: 'kst',
-    currency: 'krw',
-    profileOption: 'all',
-    messageOption: 'all',
-    categoryListOption: 'off'
-  };
-}
+const isDevMode = (process.env.NODE_ENV === 'development');
 
 if (isDevMode)
   webpackHelper.runDevServer();
 
-app.use(cors({
-  origin: ['http://localhost:8080'],
-  methods: ['GET', 'PUT'],
-  credentials: true
-}));
-app.use(session({
-  secret: 'this is secret',
-  saveUninitialized: false,
-  resave: false
-}));
-app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '../dist')));
-
-app.get('/api', wrap(async (req, res) => {
-  const session = req.session;
-  const userId = session.userId;
-  let userPref = getDefaultUserPref();
-  if (userId) {
-    log(`fetching data for user ${userId}`);
-    userPref = await service.getPref(userId);
-  } else {
-    const newUserId = uuid();
-    log(`creating new user ${newUserId}`);
-    session.userId = newUserId;
-  }
-  res.json(userPref);
-}));
-
-app.put('/api', wrap(async (req, res) => {
-  let success = false;
-  const userId = req.session.userId;
-  if (userId) {
-    log(`saving data for user ${userId}`);
-    success = await service.setPref(userId, req.body);
-    log(`saved data for user ${userId}, result: ${success}`);
-  }
-  res.json({ success });
-}));
-
-app.listen(3000, () => {
-  log('server is listening...');
+const port = 3000;
+app.listen(port, () => {
+  log(`api server is listening on port ${port}...`);
 });

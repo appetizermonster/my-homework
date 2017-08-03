@@ -9,8 +9,9 @@ function runDevServer() {
   const webpackConfig = require('../webpack.config.js');
   const compiler = webpack(webpackConfig);
   const devServer = new WebpackDevServer(compiler, webpackConfig.devServer);
-  devServer.listen(8080, () => {
-    log('WebpackDevServer is listening...');
+  const port = 8080;
+  devServer.listen(port, () => {
+    log(`WebpackDevServer is listening on ${port}... open http://localhost:${port}`);
   });
 }
 

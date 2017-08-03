@@ -1,5 +1,7 @@
 'use strict';
 
+let enableLogging = true;
+
 function toMessage(obj) {
   if (obj === undefined)
     return 'undefined';
@@ -11,6 +13,11 @@ function toMessage(obj) {
 }
 
 module.exports = (obj) => {
+  if (!enableLogging)
+    return;
+
   const msg = toMessage(obj);
   console.log(`[${new Date().toISOString()}] ${msg}`);
 };
+
+module.exports.disableLogging = () => enableLogging = false;
