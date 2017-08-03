@@ -17,9 +17,9 @@ if (isTestMode)
 
 if (isDevMode) {
   const cors = require('cors');
+  const webpackHelper = require('./webpack-helper');
   app.use(cors({
-    origin: ['http://localhost:8080'],
-    methods: ['GET', 'PUT'],
+    origin: [`http://localhost:${webpackHelper.LISTEN_PORT}`],
     credentials: true
   }));
 }
